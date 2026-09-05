@@ -18,7 +18,8 @@
 逐项拍板，每项一个 commit：
 
 - [x] 站点信息：title / subtitle / description / keywords / site_url / siteStartDate → 用户定稿已应用（"夏翌的随记小站 / 记录、思考与灵感"），GitHub Pages URL
-- [x] 头像与资料（文字部分）：profileConfig 昵称"夏翌 · Xiayi"、bio 代拟、GitHub/邮箱/RSS 链接 → **头像图欠着（用户找图中）**，暂用 Firefly 默认头像
+- [x] 头像与资料（文字部分）：profileConfig 昵称"夏翌 · Xiayi"、bio 代拟、GitHub/邮箱/RSS 链接 → **头像已替换为用户图**（2026-09-06，assets/images/xiayi/avatar.avif）
+- [x] 图片素材入库：用户图 6 张统一转 AVIF 新增（头像 1 + 桌面壁纸 3 + 手机壁纸 2），上游原图未动，壁纸未启用待 M4
 - [x] 清理演示内容 1/4：关于我页 → 用户审核定稿已上线（含气象×AI 背景段落）
 - [ ] 导航栏：navBarConfig（菜单项、Logo、模式）
 - [ ] 侧边栏：sidebarConfig（组件取舍）
@@ -52,6 +53,6 @@
 ## 当前断点
 
 - 里程碑：M2 进行中
-- 状态：站点信息定稿、侧栏资料、页面开关完成（2026-09-05~06）；**欠账：头像图、favicon（均等用户提供素材）**
-- 下一项：清理演示内容（关于我页含"夏叶"演示文、示例文章、演示动态、置顶的 Firefly 推广文）——导航已干净，剩内容层
-- 已知待办：M3 部署时 astro.config.mjs 需设 base: "/Xiayi-blog/"；横幅壁纸为星穹铁道 IP 素材，M4 换
+- 状态：站点信息、侧栏资料、页面开关、头像完成（2026-09-06）；**欠账：favicon（等 logo/ 文件夹出图）**
+- 下一项：演示文章处理方案已报备待批（语法类 7 篇+7 图移 references/，推广类 15 个文件删除）；演示动态 4 条删除待批
+- 已知待办：M3 部署时 astro.config.mjs 需设 base: "/Xiayi-blog/"；横幅壁纸素材已入库未启用，M4 启用时改 backgroundWallpaper.ts
