@@ -50,3 +50,4 @@ package/
 
 # Xiayi-blog 附加约定
 tmp/
+.zcode/
