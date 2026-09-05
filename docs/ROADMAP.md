@@ -32,14 +32,14 @@
 
 验收标准：改动后 `pnpm check` + dev 渲染正常，每项独立可回退。
 
-## M3 GitHub Pages 部署（未开始）
+## M3 GitHub Pages 部署（已完成 2026-09-05）
 
-- [ ] ADR：部署方式（Actions 构建发布到 gh-pages 分支 / Actions + Pages）
-- [ ] base path 处理（`<user>.github.io/Xiayi-blog/` 子路径）或自定义域名
-- [ ] site_url 与 sitemap / RSS 对齐
-- [ ] workflow 文件 + 首次部署验证
+- [x] ADR：部署方式 → ADR-XB-004（Actions 构建发布 Pages，DEPLOY_BASE 环境变量注入子路径）
+- [x] base path 处理 → `astro.config.mjs` 环境变量方案 + 三个组件链接渲染补 base-aware `url()`
+- [x] site_url 与 sitemap / RSS 对齐 → siteConfig 早已指向 Pages URL
+- [x] workflow 文件 + 首次部署验证 → 上游 deploy.yml 触发分支改 main；**push 触发首次部署 59s 成功**
 
-验收标准：公网可访问，HTTPS 生效，文章页 / 图片 / 搜索正常。
+验收标准：**PASS** — 线上 https://zhenkun26.github.io/Xiayi-blog/ 首页/关于页 200，标题正确，资源带子路径前缀；截图 `references/m3-live-first-deploy-1280x720.png`。
 
 ## M4 外观逐项迭代（参考 rainzt.cn，未开始）
 
@@ -56,7 +56,7 @@
 
 ## 当前断点
 
-- 里程碑：**M2 已完成**（2026-09-06），M3 部署待用户授权启动
-- 状态：站点内容层干净——空文章列表即真实状态，`pnpm new-post` 可写第一篇；语法参考在 references/；favicon 仍欠（logo/ 文件夹出图后我切四档）
-- 下一项：M3 GitHub Pages 部署（需授权：创建远程仓库 + push + Actions workflow）；评论系统 ADR 可与部署并行准备
-- 已知待办：M3 部署时 astro.config.mjs 需设 base: "/Xiayi-blog/"；壁纸素材已入库未启用（M4 用 backgroundWallpaper.ts 启用）
+- 里程碑：**M3 已完成（2026-09-05）**，博客已上线 https://zhenkun26.github.io/Xiayi-blog/
+- 状态：每次 `git push origin main` 自动重新部署（Actions 约 1~3 分钟）；favicon 仍欠（logo/ 出图后我切四档）；侧栏公告演示文案待换（announcementConfig.ts）
+- 下一项：写第一篇真文章（`pnpm new-post`）或 M4 外观迭代（壁纸启用/色相/字体，一次一项）；评论系统 ADR 建议在写文章前定（giscus 零成本，与 GitHub Pages 天然契合）
+- 已知待办：M4 启用已入库壁纸（backgroundWallpaper.ts，桌面 3 张/手机 2 张已备好）

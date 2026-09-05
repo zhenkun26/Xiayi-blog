@@ -45,5 +45,5 @@
 - **选择**：环境变量注入——`astro.config.mjs` 中 `base: process.env.DEPLOY_BASE ?? "/"`，deploy.yml 构建任务注入 `DEPLOY_BASE: /Xiayi-blog/`；deploy.yml/build.yml 触发分支改为 main。
 - **放弃**：固定 base（影响本地体验）；主站仓库部署（多站点共存不灵活）。
 - **组件偏离**：上游三个组件（Profile.astro / Announcement.astro / BannerHomeTextOverlay.astro）渲染配置链接时未走 base-aware 的 `url()` 工具，已补上（网络地址/mailto 行为不变）。上游更新时此处可能有轻微冲突，属已知维护成本。
-- **验证**：本地 `DEPLOY_BASE=/Xiayi-blog/ pnpm build` 通过；dist 全站 HTML 无裸根路径链接；`pnpm check` 0 错误。线上验证待首次部署后回填。
+- **验证**：本地 `DEPLOY_BASE=/Xiayi-blog/ pnpm build` 通过；dist 全站 HTML 无裸根路径链接；`pnpm check` 0 错误。**线上验证 PASS**——push 触发首次部署 59s 成功，https://zhenkun26.github.io/Xiayi-blog/ 首页/关于页 200，标题与资源前缀正确。
 - **改判条件**：GitHub Pages 子路径方案出现无法修复的资源加载问题，或未来购买自定义域名（根路径部署，届时可移除 DEPLOY_BASE 注入）。
