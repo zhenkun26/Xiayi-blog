@@ -6,12 +6,12 @@
 
 - [x] M1-1 git init，Firefly 以 `upstream` 远端接入，本地 main 基于 upstream/master（db331cf）
 - [x] M1-2 环境：Node 24.20（要求 ≥22.23）、pnpm 11.22.0（corepack，与 packageManager 锁定一致）
-- [ ] M1-3 Phase 0 文档骨架（AGENTS 项目约定 / ROADMAP / PROCESS / DECISIONS / .gitignore 追加）
-- [ ] M1-4 `pnpm install` 成功
-- [ ] M1-5 `pnpm dev` → localhost:4321 渲染验证（浏览器截图为证据）
-- [ ] M1-6 最小配置：站点标题等占位改动（单 commit）
+- [x] M1-3 Phase 0 文档骨架（AGENTS 项目约定 / ROADMAP / PROCESS / DECISIONS / .gitignore 追加）→ commit 2ffcda9
+- [x] M1-4 `pnpm install` 成功（59.2s）→ PASS
+- [x] M1-5 `pnpm dev` → localhost:4321 渲染验证 → PASS，截图 `references/m1-home-light-1280x720.png`
+- [x] M1-6 最小配置：站点标题占位（title/subtitle/navbar.title）→ commit 4714c14
 
-验收标准：dev 服务器正常渲染默认首页；`pnpm check` 无错误；全部改动独立 commit 可回退。
+验收标准：dev 服务器正常渲染默认首页；`pnpm check` 无错误（253 文件 0 错误 0 警告 PASS）；全部改动独立 commit 可回退。
 
 ## M2 站点基础配置（未开始）
 
@@ -50,6 +50,7 @@
 
 ## 当前断点
 
-- 里程碑：M1
-- 状态：M1-3 进行中（pnpm install 后台执行）
-- 下一步：install 完成后 `pnpm dev`，浏览器验证渲染
+- 里程碑：M1 已完成（2026-09-04），M2 待启动
+- 状态：本地 dev 可用（`pnpm dev` → localhost:4321）；git 身份尚为自动生成（zhenkun@zhenkundeMacBook-Air.local），建议用户设置 `git config` 后续提交使用正确身份
+- 下一步：等用户对 M2 第一项拍板（建议顺序：站点信息 → 头像资料 → 页面开关 → 导航/侧栏 → 评论系统 ADR）；部署（M3）与外观迭代（M4）其后
+- 已知待办：默认横幅/头像为星穹铁道 IP 美术（Firefly 自带演示素材），M4 阶段替换为自己的图
