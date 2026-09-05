@@ -9,6 +9,7 @@
 | ADR-XB-001 | 采用 CuteLeaf/Firefly 作为博客底座 | accepted | 本文件、git log |
 | ADR-XB-002 | 目录位置约束与文档布局 | accepted | AGENTS.md、docs/ |
 | ADR-XB-003 | 内容专注中文，不引入多语言内容路由 | accepted | siteConfig.ts、ROADMAP |
+| ADR-XB-004 | GitHub Pages 部署方案与 base 路径处理 | accepted | .github/workflows/deploy.yml、astro.config.mjs |
 
 ## ADR-XB-001：采用 CuteLeaf/Firefly 作为博客底座
 
@@ -36,3 +37,13 @@
 - **放弃**：内容双语路线图及其全部关联任务。
 - **验证**：`src/config/siteConfig.ts` 中 `SITE_LANG = resolveSiteLang("zh_CN")`（上游默认）。
 - **改判条件**：用户重新提出双语需求时，另立 ADR 并恢复对应里程碑。
+
+## ADR-XB-004：GitHub Pages 部署方案与 base 路径处理
+
+- **背景**：站点部署到 `https://zhenkun26.github.io/Xiayi-blog/`（项目页子路径）。本地开发希望保持根路径；上游自带 GitHub Pages workflow（触发分支 master，本仓库主分支为 main）。
+- **候选方案**：固定 `base: "/Xiayi-blog/"`（本地 URL 变丑）；构建时用环境变量注入 base（本地根路径、CI 子路径）；换用户主站 `zhenkun26.github.io` 根路径部署。
+- **选择**：环境变量注入——`astro.config.mjs` 中 `base: process.env.DEPLOY_BASE ?? "/"`，deploy.yml 构建任务注入 `DEPLOY_BASE: /Xiayi-blog/`；deploy.yml/build.yml 触发分支改为 main。
+- **放弃**：固定 base（影响本地体验）；主站仓库部署（多站点共存不灵活）。
+- **组件偏离**：上游三个组件（Profile.astro / Announcement.astro / BannerHomeTextOverlay.astro）渲染配置链接时未走 base-aware 的 `url()` 工具，已补上（网络地址/mailto 行为不变）。上游更新时此处可能有轻微冲突，属已知维护成本。
+- **验证**：本地 `DEPLOY_BASE=/Xiayi-blog/ pnpm build` 通过；dist 全站 HTML 无裸根路径链接；`pnpm check` 0 错误。线上验证待首次部署后回填。
+- **改判条件**：GitHub Pages 子路径方案出现无法修复的资源加载问题，或未来购买自定义域名（根路径部署，届时可移除 DEPLOY_BASE 注入）。

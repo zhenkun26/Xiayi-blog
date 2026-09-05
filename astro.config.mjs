@@ -69,7 +69,8 @@ const adapter = process.env.CF_WORKERS
 export default defineConfig({
 	site: siteConfig.site_url,
 
-	base: "/",
+	// GitHub Pages 项目页部署在子路径下；本地开发保持根路径（CI 中注入 DEPLOY_BASE）
+	base: process.env.DEPLOY_BASE ?? "/",
 	trailingSlash: "always",
 
 	// 字体配置 - 只加载实际使用的字体，跳过未引用的以加快构建
