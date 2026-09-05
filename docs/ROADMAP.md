@@ -17,8 +17,9 @@
 
 逐项拍板，每项一个 commit：
 
-- [x] 站点信息：title / subtitle / description / keywords / site_url / siteStartDate → 已应用推荐方案（"夏翌的小站 / 写给明天的自己"），**命名待用户最终授权**，可一行替换
-- [ ] 头像与资料：profileConfig（头像图片、名称、简介、社交链接）
+- [x] 站点信息：title / subtitle / description / keywords / site_url / siteStartDate → 用户定稿已应用（"夏翌的随记小站 / 记录、思考与灵感"），GitHub Pages URL
+- [x] 头像与资料（文字部分）：profileConfig 昵称"夏翌 · Xiayi"、bio 代拟、GitHub/邮箱/RSS 链接 → **头像图欠着（用户找图中）**，暂用 Firefly 默认头像
+- [ ] 清理演示内容：关于我页（含"夏叶"演示文）、示例文章、演示动态、演示友链/相册——全部为上游 demo 数据
 - [ ] 导航栏：navBarConfig（菜单项、Logo、模式）
 - [ ] 侧边栏：sidebarConfig（组件取舍）
 - [ ] 页面开关：siteConfig.pages（friends / guestbook / dynamic / gallery / booknav / sponsor 等，用不到的先关）
@@ -51,6 +52,6 @@
 ## 当前断点
 
 - 里程碑：M2 进行中
-- 状态：站点信息已应用（2026-09-05，commit 见 git log），命名方案待用户授权/替换；favicon 欠着（用户找图中）
-- 下一项：头像与资料（profileConfig）——需用户提供头像图与社交链接，或先用占位；页面开关可并行拍板
-- 已知待办：M3 部署时 astro.config.mjs 需设 base: "/Xiayi-blog/"（项目页子路径）；默认横幅/头像是星穹铁道 IP 素材，M4 换
+- 状态：站点信息定稿 + 侧栏资料文字完成（2026-09-05）；**欠账：头像图、favicon（均等用户提供素材）**
+- 下一项：清理演示内容（关于我/示例文章/动态）或页面开关拍板，二选一由用户定
+- 已知待办：M3 部署时 astro.config.mjs 需设 base: "/Xiayi-blog/"；横幅壁纸为星穹铁道 IP 素材，M4 换
