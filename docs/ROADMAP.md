@@ -17,7 +17,7 @@
 
 逐项拍板，每项一个 commit：
 
-- [ ] 站点信息：title / subtitle / description / keywords / site_url / siteStartDate
+- [x] 站点信息：title / subtitle / description / keywords / site_url / siteStartDate → 已应用推荐方案（"夏翌的小站 / 写给明天的自己"），**命名待用户最终授权**，可一行替换
 - [ ] 头像与资料：profileConfig（头像图片、名称、简介、社交链接）
 - [ ] 导航栏：navBarConfig（菜单项、Logo、模式）
 - [ ] 侧边栏：sidebarConfig（组件取舍）
@@ -50,7 +50,7 @@
 
 ## 当前断点
 
-- 里程碑：M1 已完成（2026-09-04），M2 待启动
-- 状态：本地 dev 可用（`pnpm dev` → localhost:4321）；git 身份尚为自动生成（zhenkun@zhenkundeMacBook-Air.local），建议用户设置 `git config` 后续提交使用正确身份
-- 下一步：等用户对 M2 第一项拍板（建议顺序：站点信息 → 头像资料 → 页面开关 → 导航/侧栏 → 评论系统 ADR）；部署（M3）与外观迭代（M4）其后
-- 已知待办：默认横幅/头像为星穹铁道 IP 美术（Firefly 自带演示素材），M4 阶段替换为自己的图
+- 里程碑：M2 进行中
+- 状态：站点信息已应用（2026-09-05，commit 见 git log），命名方案待用户授权/替换；favicon 欠着（用户找图中）
+- 下一项：头像与资料（profileConfig）——需用户提供头像图与社交链接，或先用占位；页面开关可并行拍板
+- 已知待办：M3 部署时 astro.config.mjs 需设 base: "/Xiayi-blog/"（项目页子路径）；默认横幅/头像是星穹铁道 IP 素材，M4 换
