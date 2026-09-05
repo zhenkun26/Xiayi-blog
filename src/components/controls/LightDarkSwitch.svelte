@@ -56,10 +56,22 @@ function toggleScheme(event: Event) {
 		return;
 	}
 
-	const target = event.currentTarget as HTMLElement;
-	const rect = target.getBoundingClientRect();
-	const x = rect.left + rect.width / 2;
-	const y = rect.top + rect.height / 2;
+	// 圆心显式取本组件按钮的实际中心：个别引擎的事件代理路径下
+	// currentTarget 指向不可靠（曾导致圆心漂移到页面顶部中间），不依赖它
+	const button = document.getElementById("scheme-switch");
+	const rect = button?.getBoundingClientRect();
+	let x = window.innerWidth / 2;
+	let y = 0;
+	if (rect && rect.width > 0 && rect.height > 0) {
+		x = rect.left + rect.width / 2;
+		y = rect.top + rect.height / 2;
+	} else {
+		const pointer = event as PointerEvent;
+		if (pointer.clientX || pointer.clientY) {
+			x = pointer.clientX;
+			y = pointer.clientY;
+		}
+	}
 	// 从圆心到屏幕最远角的距离，保证铺满
 	const endRadius = Math.hypot(
 		Math.max(x, window.innerWidth - x),
@@ -67,21 +79,29 @@ function toggleScheme(event: Event) {
 	);
 
 	const transition = document.startViewTransition(apply);
-	transition.ready.then(() => {
-		document.documentElement.animate(
-			{
-				clipPath: [
-					`circle(0px at ${x}px ${y}px)`,
-					`circle(${endRadius}px at ${x}px ${y}px)`,
-				],
-			},
-			{
-				duration: 600,
-				easing: "ease-in-out",
-				pseudoElement: "::view-transition-new(root)",
-			},
-		);
-	});
+	transition.ready
+		.then(() => {
+			try {
+				document.documentElement.animate(
+					{
+						clipPath: [
+							`circle(0px at ${x}px ${y}px)`,
+							`circle(${endRadius}px at ${x}px ${y}px)`,
+						],
+					},
+					{
+						duration: 600,
+						easing: "ease-in-out",
+						pseudoElement: "::view-transition-new(root)",
+					},
+				);
+			} catch {
+				// 引擎不支持伪元素动画（部分 WebKit 版本）：放弃动画，保持直接切换
+			}
+		})
+		.catch(() => {
+			// 过渡被跳过（如连续快速点击）：无需动画
+		});
 }
 
 // 使用onMount确保在组件挂载后正确初始化
