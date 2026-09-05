@@ -46,10 +46,7 @@ export function initLayout(): void {
 		"wallpaper-mode-panel",
 		"wallpaper-mode-switch",
 	]);
-	setClickOutsideToClose("theme-mode-panel", [
-		"theme-mode-panel",
-		"scheme-switch",
-	]);
+	// theme-mode-panel 已移除：导航栏亮/暗切换改为点按直接翻转（LightDarkSwitch.svelte）
 
 	setupSwupTransitions();
 	initFullscreenWallpaper();

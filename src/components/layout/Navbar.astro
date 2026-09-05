@@ -318,15 +318,7 @@ function loadButtonScript() {
         }
     }
 
-    let themeSwitchBtn = document.getElementById("scheme-switch");
-    if (themeSwitchBtn) {
-        themeSwitchBtn.onclick = function () {
-            let themePanel = document.getElementById("theme-mode-panel");
-            if (themePanel) {
-                themePanel.classList.toggle("float-panel-closed");
-            }
-        };
-    }
+    // 亮/暗切换已改为点按直接翻转（见 LightDarkSwitch.svelte），不再有 theme-mode-panel
 
     document.addEventListener("click", function(event) {
         // nav-menu-panel 不再走点击外部关闭：面板现在覆盖全屏（inset-0），任意点击都在面板内，

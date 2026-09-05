@@ -1,8 +1,4 @@
 <script lang="ts">
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
-import { onMount } from "svelte";
-import DropdownItem from "@/components/common/DropdownItem.svelte";
 import Icon from "@/components/common/Icon.svelte";
 import { DARK_MODE, LIGHT_MODE, SYSTEM_MODE } from "@/constants/constants";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
@@ -11,6 +7,7 @@ import {
 	getStoredTheme,
 	setTheme,
 } from "@/utils/setting-utils";
+import { onMount } from "svelte";
 
 // Define Swup type for window object
 interface SwupHooks {
@@ -26,13 +23,6 @@ type WindowWithSwup = Window & { swup?: SwupInstance };
 let mode: LIGHT_DARK_MODE = $state(LIGHT_MODE);
 let displayedMode: LIGHT_DARK_MODE = $state(LIGHT_MODE); // 显示的实际主题（在system模式下会随系统变化）
 
-function switchScheme(newMode: LIGHT_DARK_MODE) {
-	mode = newMode;
-	setTheme(newMode);
-	updateDisplayedMode();
-}
-
-// 更新显示的主题（用于显示当前实际主题）
 function updateDisplayedMode() {
 	if (mode === SYSTEM_MODE) {
 		// 如果是system模式，显示实际的系统主题
@@ -43,6 +33,55 @@ function updateDisplayedMode() {
 	} else {
 		displayedMode = mode;
 	}
+}
+
+// 点按直接在亮/暗之间切换；以按钮为圆心做圆形扩散揭示：
+// 圆内是新配色、圆外保持旧配色，直到铺满全屏（CSS 禁用了默认交叉淡化，见 main.css）
+function toggleScheme(event: Event) {
+	const newMode: LIGHT_DARK_MODE =
+		displayedMode === DARK_MODE ? LIGHT_MODE : DARK_MODE;
+
+	const apply = () => {
+		mode = newMode;
+		setTheme(newMode);
+		updateDisplayedMode();
+	};
+
+	// 尊重系统"减弱动态效果"偏好；不支持 View Transitions 的浏览器直接切换
+	if (
+		typeof document.startViewTransition !== "function" ||
+		window.matchMedia("(prefers-reduced-motion: reduce)").matches
+	) {
+		apply();
+		return;
+	}
+
+	const target = event.currentTarget as HTMLElement;
+	const rect = target.getBoundingClientRect();
+	const x = rect.left + rect.width / 2;
+	const y = rect.top + rect.height / 2;
+	// 从圆心到屏幕最远角的距离，保证铺满
+	const endRadius = Math.hypot(
+		Math.max(x, window.innerWidth - x),
+		Math.max(y, window.innerHeight - y),
+	);
+
+	const transition = document.startViewTransition(apply);
+	transition.ready.then(() => {
+		document.documentElement.animate(
+			{
+				clipPath: [
+					`circle(0px at ${x}px ${y}px)`,
+					`circle(${endRadius}px at ${x}px ${y}px)`,
+				],
+			},
+			{
+				duration: 600,
+				easing: "ease-in-out",
+				pseudoElement: "::view-transition-new(root)",
+			},
+		);
+	});
 }
 
 // 使用onMount确保在组件挂载后正确初始化
@@ -115,7 +154,7 @@ onMount(() => {
 </script>
 
 <div class="z-50">
-	<button aria-label="Light/Dark Mode" aria-haspopup="menu" aria-controls="theme-mode-panel" aria-expanded="false" class="relative btn-plain scale-animation rounded-lg h-9 w-9 md:h-11 md:w-11 active:scale-90" id="scheme-switch">
+	<button aria-label="Light/Dark Mode" onclick={toggleScheme} class="relative btn-plain scale-animation rounded-lg h-9 w-9 md:h-11 md:w-11 active:scale-90" id="scheme-switch">
         <div class="absolute inset-0 flex items-center justify-center" class:opacity-0={displayedMode !== LIGHT_MODE}>
             <Icon icon="material-symbols:wb-sunny-outline-rounded" class="text-[1.25rem]"></Icon>
         </div>
@@ -123,33 +162,4 @@ onMount(() => {
             <Icon icon="material-symbols:dark-mode-outline-rounded" class="text-[1.25rem]"></Icon>
         </div>
     </button>
-    <div id="theme-mode-panel" class="float-panel float-panel-closed absolute transition-all top-21 right-4 p-2 z-50" role="menu" aria-labelledby="scheme-switch" data-floating-panel data-floating-panel-trigger="scheme-switch" inert aria-hidden="true">
-        <DropdownItem
-            role="menuitem"
-            isActive={mode === LIGHT_MODE}
-            isLast={false}
-            onclick={() => switchScheme(LIGHT_MODE)}
-        >
-            <Icon icon="material-symbols:wb-sunny-outline-rounded" class="text-[1.25rem] mr-3"></Icon>
-            {i18n(I18nKey.lightMode)}
-        </DropdownItem>
-        <DropdownItem
-            role="menuitem"
-            isActive={mode === DARK_MODE}
-            isLast={false}
-            onclick={() => switchScheme(DARK_MODE)}
-        >
-            <Icon icon="material-symbols:dark-mode-outline-rounded" class="text-[1.25rem] mr-3"></Icon>
-            {i18n(I18nKey.darkMode)}
-        </DropdownItem>
-        <DropdownItem
-            role="menuitem"
-            isActive={mode === SYSTEM_MODE}
-            isLast={true}
-            onclick={() => switchScheme(SYSTEM_MODE)}
-        >
-            <Icon icon="material-symbols:brightness-auto-outline-rounded" class="text-[1.25rem] mr-3"></Icon>
-            {i18n(I18nKey.systemMode)}
-        </DropdownItem>
-    </div>
 </div>
