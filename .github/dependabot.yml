@@ -1,22 +1,5 @@
+# Dependabot 配置
+# 本仓库约定：依赖变更需单独评估后手动执行（见 AGENTS.md 授权边界），
+# 因此关闭自动版本更新 PR。需要升级依赖时手动运行 pnpm update / pnpm add。
 version: 2
-updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    groups:
-      patch-updates:
-        patterns:
-          - "*"
-        update-types:
-          - "patch"
-      minor-updates:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-    pull-request-branch-name:
-      separator: "-"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+updates: []
