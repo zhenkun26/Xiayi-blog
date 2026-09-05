@@ -32,3 +32,45 @@ Use Conventional Commits, matching the current history: `feat: ...`, `fix: ...`,
 ## Security & Configuration Tips
 
 Do not commit secrets, tokens, or service keys in config files. Keep deployment-specific settings in the target platform environment, and review generated files such as `dist`, `src/constants/lqips.json`, and `src/constants/icons.ts` before committing them.
+
+---
+
+# Xiayi-blog 项目约定（追加于上游 AGENTS.md 之上）
+
+> 本节是博客项目的仓库规则。与上文主题开发指引冲突时以本节为准，且冲突解决需在 `docs/DECISIONS.md` 记录 ADR。
+
+## 项目定位
+
+- 这是 Xiayi 的个人博客，底座为 CuteLeaf/Firefly（Astro 7 + Svelte 5 + Tailwind），专注中文内容与中文社区。
+- 上游仓库保留为 git remote `upstream`（分支 `master`）；本地 `main` 在 Firefly 历史之上叠加自有提交，message 延续 Conventional Commits。
+
+## 文档索引（单一状态源）
+
+| 文档 | 职责 |
+|---|---|
+| `docs/ROADMAP.md` | 计划列表与当前状态；每次会话结束必须更新勾选与"当前断点" |
+| `docs/PROCESS.md` | 改动五步循环、防抽奖规则、回滚规则、证据纪律 |
+| `docs/DECISIONS.md` | ADR 决策记录（背景/候选/选择/放弃/验证/改判条件） |
+| `src/config/README.md` | 主题配置文件地图（上游自带，26 个配置模块） |
+
+## 目录位置约束
+
+- 仓库根 = 博客本体；不新增顶层目录，除非 ADR 批准。
+- `docs/` 只放项目方法论文档；上游的 README 翻译与图片保持原位不动。
+- `references/` 放参考材料（对标站点截图、上游文档摘录）；`scripts/` 放自建脚本，用 `xiayi-` 前缀与上游脚本区分。
+- 临时产物（截图草稿、实验文件）一律 `/tmp` 或仓库 `tmp/`（已 gitignore）；不得散落在仓库外或根目录，会话结束前清理。
+
+## 记忆与恢复协议（假设每次轮次之间都会失忆）
+
+- **L0 仓库即记忆**：git log/diff、本文件、docs/ 三件套就是状态本身。重要结论必须落文件，聊天记录不算记忆。
+- **L1 错误记忆**：出现自愈、反复失败或关键教训时，追加 `docs/ERROR_MEMORY.md`（错误 → 修复 → 预防规则）；超过 100 条触发合并提炼。
+- **L2 任务状态**：ROADMAP.md 的勾选与"当前断点"小节是唯一任务状态源；发现多处状态矛盾时停止实现，以仓库现实为准。
+- **L3 交接报告**：每次交付按"改动 + 证据 + 假设与风险 + 待授权动作"四段汇报。
+- **恢复会话**：先读本文件与 ROADMAP；旧会话的一切 PASS 视为未验证，重跑关键验证后才能在其上继续。
+
+## 授权边界（未获明确授权不得执行）
+
+- `git push`、创建/修改远程仓库、部署（GitHub Pages / Vercel 等）
+- 安装新依赖（`pnpm add`）、修改 pnpm-lock.yaml 之外的依赖声明
+- 删除文件、批量重命名、合并上游更新（`git merge upstream/master`）
+- 上文 Firefly 开发规范中的验证要求（`pnpm check` / `type-check` / `build`）在本仓库继续适用。

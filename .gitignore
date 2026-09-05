@@ -47,3 +47,6 @@ package/
 .codex*
 .claude
 .mimocode
+
+# Xiayi-blog 附加约定
+tmp/
