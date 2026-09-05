@@ -19,7 +19,7 @@
 
 - [x] 站点信息：title / subtitle / description / keywords / site_url / siteStartDate → 用户定稿已应用（"夏翌的随记小站 / 记录、思考与灵感"），GitHub Pages URL
 - [x] 头像与资料（文字部分）：profileConfig 昵称"夏翌 · Xiayi"、bio 代拟、GitHub/邮箱/RSS 链接 → **头像图欠着（用户找图中）**，暂用 Firefly 默认头像
-- [ ] 清理演示内容：关于我页（含"夏叶"演示文）、示例文章、演示动态、演示友链/相册——全部为上游 demo 数据
+- [x] 清理演示内容 1/4：关于我页 → 用户审核定稿已上线（含气象×AI 背景段落）
 - [ ] 导航栏：navBarConfig（菜单项、Logo、模式）
 - [ ] 侧边栏：sidebarConfig（组件取舍）
 - [x] 页面开关：友链 / 留言板 / 动态 / 相册 / 书签导航 / 打赏 全部关闭（页面 302 到 /404/，导航自动隐藏；上游推广菜单已移除，保留 MIT 署名）
