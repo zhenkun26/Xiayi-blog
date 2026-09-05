@@ -45,7 +45,8 @@
 
 原则：**一次只做一项**，完成后截图对比 → 用户确认 → 下一项。候选池（顺序待定）：
 
-- [ ] 背景壁纸模式（backgroundWallpaper.ts：banner / 全屏 / 透明 / 纯色）
+- [x] 横幅文案：主标题 "Welcome to my little corner"（3.5rem）+ 三条中文打字机副标题 → commit 024d119，线上验证通过
+- [ ] 背景壁纸模式（backgroundWallpaper.ts：banner / 全屏 / 透明 / 纯色；素材已入库可选用）
 - [ ] 主题色相（hue）与明暗默认模式
 - [ ] 字体方案（fontConfig.ts）
 - [ ] 文章列表布局（list / grid / masonry，封面位置）
@@ -56,7 +57,7 @@
 
 ## 当前断点
 
-- 里程碑：**M3 已完成（2026-09-05）**，博客已上线 https://zhenkun26.github.io/Xiayi-blog/
-- 状态：每次 `git push origin main` 自动重新部署（Actions 约 1~3 分钟）；favicon 仍欠（logo/ 出图后我切四档）；侧栏公告演示文案待换（announcementConfig.ts）
-- 下一项：写第一篇真文章（`pnpm new-post`）或 M4 外观迭代（壁纸启用/色相/字体，一次一项）；评论系统 ADR 建议在写文章前定（giscus 零成本，与 GitHub Pages 天然契合）
+- 里程碑：M4 外观迭代进行中（横幅文案已完成）
+- 状态：线上站与本地一致；favicon 仍欠（logo/ 出图后切四档）；侧栏公告演示文案待换
+- 下一项：壁纸启用 / 色相 / 字体等候选池任选；或写第一篇真文章（pnpm new-post）；评论系统 ADR 待做
 - 已知待办：M4 启用已入库壁纸（backgroundWallpaper.ts，桌面 3 张/手机 2 张已备好）
