@@ -47,6 +47,11 @@
 
 - [x] 横幅文案：主标题 "Welcome to my little corner"（3.5rem）+ 三条中文打字机副标题 → commit 024d119，线上验证通过
 - [x] 亮/暗切换：改为点按直接翻转 + View Transitions 圆形扩散动画（圆心=按钮，圆内新色/圆外旧色）→ commit 2476cae，动画帧截图 `references/m4-theme-toggle-mid.png`；三选一下拉移除，"跟随系统"保留为初始默认
+- [x] 主题切换动画兼容性修复：圆心显式取按钮位置（实体设备圆心漂移 bug）→ commit 42d5db0
+- [x] 仓库治理：main 分支保护、Dependabot PR 清理并关闭自动更新、README 重写（注明 Firefly 来源）、firefly-base 基线分支 → commit 1a9bfa3/9e523a6
+- [ ] logo（蝴蝶×梅枝）：两稿均不满意，**用户要求搁置**；候选池保留，等灵感或用户供图
+- [ ] 评论系统：ADR-XB-005 草案（giscus）**待用户批准**，批准后按执行清单操作
+- [ ] 第一篇文章：草稿已写（blog-launch.md，draft:true 未发布），**待用户审核**后改 draft:false 发布
 - [ ] 背景壁纸模式（backgroundWallpaper.ts：banner / 全屏 / 透明 / 纯色；素材已入库可选用）
 - [ ] 主题色相（hue）与明暗默认模式
 - [ ] 字体方案（fontConfig.ts）
@@ -58,7 +63,7 @@
 
 ## 当前断点
 
-- 里程碑：M4 外观迭代进行中（横幅文案、主题切换动画已完成）
-- 状态：线上站与本地一致；favicon 仍欠（logo/ 出图后切四档）；侧栏公告演示文案待换
-- 下一项：壁纸启用 / 色相 / 字体等候选池任选；或写第一篇真文章（pnpm new-post）；评论系统 ADR 待做
+- 里程碑：M4 外观迭代进行中（横幅文案、主题切换动画完成；logo 搁置）
+- 状态：**待用户审两项**——① ADR-XB-005 评论系统（giscus）草案 ② 首篇文章草稿 blog-launch.md（draft 未上线）；favicon/公告文案欠着
+- 下一项：批准评论 ADR → 启用 Discussions + 配 giscus；文章审核通过 → 改 draft:false 发布；壁纸/色相等候选池任选
 - 已知待办：M4 启用已入库壁纸（backgroundWallpaper.ts，桌面 3 张/手机 2 张已备好）
