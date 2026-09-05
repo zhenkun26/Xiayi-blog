@@ -40,20 +40,20 @@ const pages = resolvePageToggles({
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "夏翌的小站",
+	title: "夏翌的随记小站",
 
 	// 站点副标题
-	subtitle: "写给明天的自己",
+	subtitle: "记录、思考与灵感",
 
 	// 站点 URL
 	site_url: "https://zhenkun26.github.io/Xiayi-blog/",
 
 	// 站点描述
 	description:
-		"这是夏翌（Xiayi）的个人博客。记录技术学习、项目实践与日常思考——把真实的经验写成文字，留给明天的自己。",
+		"这是夏翌（Xiayi）的个人博客：记录技术学习、项目实践与日常思考，把真实的经验写成文字，也给灵感留一席之地。",
 
 	// 站点关键词
-	keywords: ["夏翌", "Xiayi", "个人博客", "技术笔记", "生活记录", "随笔", "思考"],
+	keywords: ["夏翌", "Xiayi", "个人博客", "灵感", "随笔", "思考", "技术笔记"],
 
 	// 主题色
 	themeColor: {
@@ -107,7 +107,7 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "夏翌的小站",
+		title: "夏翌的随记小站",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
