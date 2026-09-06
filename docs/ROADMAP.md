@@ -65,7 +65,8 @@
 ## 当前断点
 
 - 里程碑：M4 外观迭代进行中（横幅文案、主题切换动画完成；logo 搁置）
-- 状态：giscus 已按 ADR-XB-005 启用（原断点“待批准”为过期记录，已与配置/ADR 对齐）；主题切换 HiDPI 修复已在本地完成，实体浏览器最终验收及上线待办；首篇文章仍为 draft，待用户审核；favicon/公告文案欠着。
-- 下一项：在实体 Chrome/Edge 打开本地生产预览验收主题切换；获得 push/部署授权后更新线上并复核。文章审核通过后再发布；其余外观候选暂不推进。
+- 状态：giscus 已按 ADR-XB-005 启用；主题切换 HiDPI 修复 `7faf3f1` 已获用户授权推送并上线，实体浏览器动画最终验收待完成；首篇文章仍为 draft，待用户审核；favicon/公告文案欠着。
+- 下一项：在实体 Chrome/Edge 刷新线上站点验收主题切换。文章审核通过后再发布；其余外观候选暂不推进。
+- 上线证据（2026-09-06）：[Pages run 34032507630](https://github.com/zhenkun26/Xiayi-blog/actions/runs/34032507630) SUCCESS，build 43s / deploy 10s；线上首页与 `LightDarkSwitch.DDOGg_t7.js` 获取成功，脚本包含百分比半径换算与 `--theme-reveal-start` / `--theme-reveal-end`，确认已替换旧资源。本轮 `pnpm type-check` 再次 PASS。此条文档提交使用 `[skip ci]`，避免仅记录部署结果再次触发相同站点构建。
 - 本次交接证据：生产预览 `http://127.0.0.1:4322/` 已运行；内置 Chromium 最终 circle(%) 中间帧 `references/m4-theme-percent-production.png`；实体 Edge 关于页切换终态 `references/m4-theme-percent-edge.png`（原生截图未捕获中间帧，圆心最终验收仍保留为待办）。
 - 已知待办：M4 启用已入库壁纸（backgroundWallpaper.ts，桌面 3 张/手机 2 张已备好）
