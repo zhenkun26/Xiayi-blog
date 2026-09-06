@@ -97,7 +97,7 @@ html {
 
 @layer components {
     /* View Transitions API 主题切换：圆形扩散揭示动画
-       clip-path 由 LightDarkSwitch.svelte 按按钮位置用 JS 驱动。
+       LightDarkSwitch.svelte 提供按钮坐标，CSS 驱动快照裁切。
        这里禁用默认交叉淡化并固定快照层序：新视图在上层被圆裁切，
        圆内是新配色、圆外保持旧配色，直到铺满全屏。 */
     ::view-transition-old(root),
@@ -112,6 +112,23 @@ html {
 
     ::view-transition-new(root) {
         z-index: 2;
+    }
+
+    :root.theme-revealing::view-transition-group(root) {
+        animation: none;
+    }
+
+    :root.theme-revealing::view-transition-new(root) {
+        animation: theme-reveal 600ms ease-in-out both;
+    }
+
+    @keyframes theme-reveal {
+        from {
+            clip-path: var(--theme-reveal-start);
+        }
+        to {
+            clip-path: var(--theme-reveal-end);
+        }
     }
     
     /* 确保边框和分隔线元素在主题切换时有更明确的过渡时长 */

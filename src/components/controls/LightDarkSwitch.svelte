@@ -1,4 +1,5 @@
 <script lang="ts">
+import { onMount, tick } from "svelte";
 import Icon from "@/components/common/Icon.svelte";
 import { DARK_MODE, LIGHT_MODE, SYSTEM_MODE } from "@/constants/constants";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
@@ -7,7 +8,6 @@ import {
 	getStoredTheme,
 	setTheme,
 } from "@/utils/setting-utils";
-import { onMount } from "svelte";
 
 // Define Swup type for window object
 interface SwupHooks {
@@ -22,6 +22,8 @@ type WindowWithSwup = Window & { swup?: SwupInstance };
 
 let mode: LIGHT_DARK_MODE = $state(LIGHT_MODE);
 let displayedMode: LIGHT_DARK_MODE = $state(LIGHT_MODE); // 显示的实际主题（在system模式下会随系统变化）
+let switchButton: HTMLButtonElement;
+let isTransitioning = false;
 
 function updateDisplayedMode() {
 	if (mode === SYSTEM_MODE) {
@@ -37,7 +39,8 @@ function updateDisplayedMode() {
 
 // 点按直接在亮/暗之间切换；以按钮为圆心做圆形扩散揭示：
 // 圆内是新配色、圆外保持旧配色，直到铺满全屏（CSS 禁用了默认交叉淡化，见 main.css）
-function toggleScheme(event: Event) {
+async function toggleScheme() {
+	if (isTransitioning) return;
 	const newMode: LIGHT_DARK_MODE =
 		displayedMode === DARK_MODE ? LIGHT_MODE : DARK_MODE;
 
@@ -56,52 +59,51 @@ function toggleScheme(event: Event) {
 		return;
 	}
 
-	// 圆心显式取本组件按钮的实际中心：个别引擎的事件代理路径下
-	// currentTarget 指向不可靠（曾导致圆心漂移到页面顶部中间），不依赖它
-	const button = document.getElementById("scheme-switch");
-	const rect = button?.getBoundingClientRect();
-	let x = window.innerWidth / 2;
-	let y = 0;
-	if (rect && rect.width > 0 && rect.height > 0) {
-		x = rect.left + rect.width / 2;
-		y = rect.top + rect.height / 2;
-	} else {
-		const pointer = event as PointerEvent;
-		if (pointer.clientX || pointer.clientY) {
-			x = pointer.clientX;
-			y = pointer.clientY;
-		}
+	// 鼠标、触摸、键盘均使用组件自身按钮的视口坐标。
+	// 无有效位置时直接切换，不制造一个与按钮无关的兜底圆心。
+	const rect = switchButton?.getBoundingClientRect();
+	if (!rect || rect.width <= 0 || rect.height <= 0) {
+		apply();
+		return;
 	}
+	const x = rect.left + rect.width / 2;
+	const y = rect.top + rect.height / 2;
 	// 从圆心到屏幕最远角的距离，保证铺满
 	const endRadius = Math.hypot(
 		Math.max(x, window.innerWidth - x),
 		Math.max(y, window.innerHeight - y),
 	);
 
-	const transition = document.startViewTransition(apply);
-	transition.ready
-		.then(() => {
-			try {
-				document.documentElement.animate(
-					{
-						clipPath: [
-							`circle(0px at ${x}px ${y}px)`,
-							`circle(${endRadius}px at ${x}px ${y}px)`,
-						],
-					},
-					{
-						duration: 600,
-						easing: "ease-in-out",
-						pseudoElement: "::view-transition-new(root)",
-					},
-				);
-			} catch {
-				// 引擎不支持伪元素动画（部分 WebKit 版本）：放弃动画，保持直接切换
-			}
-		})
-		.catch(() => {
-			// 过渡被跳过（如连续快速点击）：无需动画
+	const root = document.documentElement;
+	// 快照裁切中的 px 在 HiDPI 下可能与 DOM CSS 像素不一致。
+	// 改用相对快照尺寸的百分比，避免像素单位在合成时被再次缩放。
+	const center = `${(x / window.innerWidth) * 100}% ${(y / window.innerHeight) * 100}%`;
+	// circle 的百分比半径以参考盒对角线 / sqrt(2) 为基准。
+	const diagonal = Math.hypot(window.innerWidth, window.innerHeight);
+	const radius = (endRadius / (diagonal / Math.SQRT2)) * 100;
+	root.style.setProperty("--theme-reveal-start", `circle(0% at ${center})`);
+	root.style.setProperty(
+		"--theme-reveal-end",
+		`circle(${radius}% at ${center})`,
+	);
+	root.classList.add("theme-revealing");
+	isTransitioning = true;
+	try {
+		const transition = document.startViewTransition(async () => {
+			apply();
+			await tick();
 		});
+		// CSS 在快照创建时启动动画，不依赖 WAAPI 的 pseudoElement 路径。
+		await transition.finished;
+	} catch {
+		apply();
+	} finally {
+		root.classList.remove("theme-revealing");
+		for (const property of ["start", "end"]) {
+			root.style.removeProperty(`--theme-reveal-${property}`);
+		}
+		isTransitioning = false;
+	}
 }
 
 // 使用onMount确保在组件挂载后正确初始化
@@ -174,7 +176,7 @@ onMount(() => {
 </script>
 
 <div class="z-50">
-	<button aria-label="Light/Dark Mode" onclick={toggleScheme} class="relative btn-plain scale-animation rounded-lg h-9 w-9 md:h-11 md:w-11 active:scale-90" id="scheme-switch">
+	<button bind:this={switchButton} aria-label="Light/Dark Mode" onclick={toggleScheme} class="relative btn-plain scale-animation rounded-lg h-9 w-9 md:h-11 md:w-11 active:scale-90" id="scheme-switch">
         <div class="absolute inset-0 flex items-center justify-center" class:opacity-0={displayedMode !== LIGHT_MODE}>
             <Icon icon="material-symbols:wb-sunny-outline-rounded" class="text-[1.25rem]"></Icon>
         </div>

@@ -48,6 +48,7 @@
 - [x] 横幅文案：主标题 "Welcome to my little corner"（3.5rem）+ 三条中文打字机副标题 → commit 024d119，线上验证通过
 - [x] 亮/暗切换：改为点按直接翻转 + View Transitions 圆形扩散动画（圆心=按钮，圆内新色/圆外旧色）→ commit 2476cae，动画帧截图 `references/m4-theme-toggle-mid.png`；三选一下拉移除，"跟随系统"保留为初始默认
 - [x] 主题切换动画兼容性修复：圆心显式取按钮位置（实体设备圆心漂移 bug）→ commit 42d5db0
+- [x] 主题切换 HiDPI 二次修复（2026-09-06）：确认 px 裁切圆心与 DOM 坐标不一致；改为百分比圆心/半径 + CSS 快照动画，绑定组件按钮并防止过渡重入。`pnpm check` 253 文件 0 错误/警告、`pnpm type-check`、`pnpm build` PASS；内置 Chromium DPR=2 中间帧验证 PASS，`references/m4-theme-percent-light.png`。实体 Chrome/Edge 与线上发布后验收待完成，不能由内置浏览器结果代替。
 - [x] 仓库治理：main 分支保护、Dependabot PR 清理并关闭自动更新、README 重写（注明 Firefly 来源）、firefly-base 基线分支 → commit 1a9bfa3/9e523a6
 - [ ] logo（蝴蝶×梅枝）：两稿均不满意，**用户要求搁置**；候选池保留，等灵感或用户供图
 - [x] 评论系统：ADR-XB-005 批准并执行完毕（giscus App 已安装、配置上线、本地渲染验证 PASS）
@@ -64,6 +65,7 @@
 ## 当前断点
 
 - 里程碑：M4 外观迭代进行中（横幅文案、主题切换动画完成；logo 搁置）
-- 状态：**待用户审两项**——① ADR-XB-005 评论系统（giscus）草案 ② 首篇文章草稿 blog-launch.md（draft 未上线）；favicon/公告文案欠着
-- 下一项：批准评论 ADR → 启用 Discussions + 配 giscus；文章审核通过 → 改 draft:false 发布；壁纸/色相等候选池任选
+- 状态：giscus 已按 ADR-XB-005 启用（原断点“待批准”为过期记录，已与配置/ADR 对齐）；主题切换 HiDPI 修复已在本地完成，实体浏览器最终验收及上线待办；首篇文章仍为 draft，待用户审核；favicon/公告文案欠着。
+- 下一项：在实体 Chrome/Edge 打开本地生产预览验收主题切换；获得 push/部署授权后更新线上并复核。文章审核通过后再发布；其余外观候选暂不推进。
+- 本次交接证据：生产预览 `http://127.0.0.1:4322/` 已运行；内置 Chromium 最终 circle(%) 中间帧 `references/m4-theme-percent-production.png`；实体 Edge 关于页切换终态 `references/m4-theme-percent-edge.png`（原生截图未捕获中间帧，圆心最终验收仍保留为待办）。
 - 已知待办：M4 启用已入库壁纸（backgroundWallpaper.ts，桌面 3 张/手机 2 张已备好）
