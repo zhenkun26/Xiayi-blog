@@ -10,7 +10,7 @@
 | ADR-XB-002 | 目录位置约束与文档布局 | accepted | AGENTS.md、docs/ |
 | ADR-XB-003 | 内容专注中文，不引入多语言内容路由 | accepted | siteConfig.ts、ROADMAP |
 | ADR-XB-004 | GitHub Pages 部署方案与 base 路径处理 | accepted | .github/workflows/deploy.yml、astro.config.mjs |
-| ADR-XB-005 | 评论系统选型 giscus | **proposed（待用户批准）** | 本文件 |
+| ADR-XB-005 | 评论系统选型 giscus | accepted | commentConfig.ts、references/m5-giscus-working.png |
 
 ## ADR-XB-001：采用 CuteLeaf/Firefly 作为博客底座
 
@@ -49,7 +49,7 @@
 - **验证**：本地 `DEPLOY_BASE=/Xiayi-blog/ pnpm build` 通过；dist 全站 HTML 无裸根路径链接；`pnpm check` 0 错误。**线上验证 PASS**——push 触发首次部署 59s 成功，https://zhenkun26.github.io/Xiayi-blog/ 首页/关于页 200，标题与资源前缀正确。
 - **改判条件**：GitHub Pages 子路径方案出现无法修复的资源加载问题，或未来购买自定义域名（根路径部署，届时可移除 DEPLOY_BASE 注入）。
 
-## ADR-XB-005：评论系统选型 giscus（草案，待批准）
+## ADR-XB-005：评论系统选型 giscus
 
 - **背景**：站点需要评论能力。仓库为公开 GitHub 仓库 + GitHub Pages 静态部署，无自有服务器；评论者主要为中文读者。
 - **候选方案**：
@@ -58,8 +58,8 @@
   3. Twikoo：同样需服务端（Vercel/腾讯云函数），管理面板友好。
   4. Disqus：零成本但国内访问差、有广告，排除。
   5. Artalk：需自托管服务器，排除。
-- **选择（建议）**：giscus。理由：与"GitHub Pages + 公开仓库 + 无服务器"的现有架构零摩擦；隐私与数据主权最好；技术向读者 GitHub 渗透率高。
+- **选择**：giscus。理由：与"GitHub Pages + 公开仓库 + 无服务器"的现有架构零摩擦；隐私与数据主权最好；技术向读者 GitHub 渗透率高。**用户批准（2026-09-06）**。
 - **放弃**：Waline/Twikoo（服务端运维成本与当前阶段不匹配，未来评论量起来可再评估）；Disqus/Artalk（访问性/部署成本）。
-- **执行清单（批准后）**：启用仓库 Discussions → 安装 giscus App → 生成 repoId/categoryId → 配置 `src/config/commentConfig.ts`（type: "giscus"）→ 本地验证 + 截图 → 部署。
-- **验证**：执行后文章页出现评论区，GitHub Discussions 同步可见。
+- **执行记录**：仓库 Discussions 已启用；giscus App 已由用户授权安装（仅 Xiayi-blog 单仓库，权限=元数据读+Discussions 读写）；repoId `R_kgDOUPSsrQ` / 分类 Announcements `DIC_kwDOUPSsrc4DE942` 已配置至 `commentConfig.ts`（type: giscus）。
+- **验证**：测试文章页评论区完整渲染 PASS（表情/评论计数/输入框/使用 GitHub 登录按钮），截图 `references/m5-giscus-working.png`；`gh api` 直查 installation 端点的 401 为端点鉴权要求，非安装问题。
 - **改判条件**：读者反馈 GitHub 登录门槛过高（非技术访客评论受阻），届时补 Waline 作为替代并保留 giscus 数据。
