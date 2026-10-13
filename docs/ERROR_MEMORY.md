@@ -299,3 +299,10 @@
 - A local noreply commit identity can differ from the address accepted by GitHub's explicit squash parameter. Read the already-public successful main author linked to the current account and reuse that exact accepted identity; retain all head/base/check guards. No private-email lookup or account change is needed.
 
 - Before publishing the delivery receipt, raw-byte comparison detected Git's inherited CRLF normalization in nine HTTP-header evidence blobs. Keep original downloads and the local diagnostic; use a `.gitattributes` scoped inside the delivery evidence folder to preserve header bytes, then compare every tracked security artifact to its actual downloaded original. This does not change source/runtime/CI policy or advisory interpretation.
+
+
+## 2026-10-13 — GitHub anonymous quota blocks same-run security proof
+
+- Error: repeated bounded official reads exhausted the anonymous API core limit of60/hour. The second41-GHSA collection saved19responses and22HTTP403 failures. A dependent live gate was started before the failed full collection status was honored; it preserved both raw audits but its required fresh GHSA fetch also received403, so repair remainedUNVERIFIED and the gate exited2/BLOCKED. No renewal/release was accepted.
+- Recovery: preserve original collection/live logs, stop date and release changes, and complete unaffected local checks. Provider headers identify reset2026-10-13T12:13:55Z. Retry the unchanged official collector and live gate after reset into new directories; recovery is still pending at this checkpoint.
+- Prevention: check available quota before repeating a whole official batch, reserve capacity for same-run primary requests, and explicitly gate dependent commands on the completed upstream result. Never overwrite failed attempts, inject an earlier PASS, hide raw high findings or change auth/client/global configuration to force a green result.

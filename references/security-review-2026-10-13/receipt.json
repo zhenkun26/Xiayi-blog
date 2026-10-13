@@ -1,0 +1,142 @@
+{
+  "state": "BLOCKED",
+  "at": "2026-10-13T11:41:45.147968+00:00",
+  "measuredSource": "dbf0b70b7056274fa663b6b67532ef8d9593cb65",
+  "runtime": {
+    "node": "24.20.0",
+    "pnpm": "11.22.0",
+    "globalConfigurationChanged": false
+  },
+  "frozenOfflineInstall": "PASS",
+  "graph": {
+    "packages": 889,
+    "snapshots": 892,
+    "exactGuards": 27,
+    "unchangedDeploymentBoundaryFiles": 522,
+    "boundarySha256": "065c3798d3bbfbe3aa5b59cbef0771d34548c0bbf68c55e6db37965b998847c2",
+    "actualParentResolutions": 8,
+    "cacheLinks": 2,
+    "astroInstances": 1,
+    "allThreePatchIdentitiesVerified": true
+  },
+  "officialSources": {
+    "wholeKnownGhsaCapture": "BLOCKED",
+    "successes": 19,
+    "rateLimited": 22,
+    "primary": {
+      "ghsa": {
+        "sha256": "a78682ff5bcd3a36f73c2ef90d48fdad48b61d446a2b0ecf9b1d7892ed8213ef",
+        "matchesContract": true
+      },
+      "cve": {
+        "sha256": "3978aaaa849d764766e0bdd6e22ead35ca234f7c8729fe569575db10c0e037c7",
+        "matchesContract": true
+      },
+      "latest": {
+        "sha256": "989dbda5d00cc99697648ac16755c0f3afc73ce2e1f478e54a476838a70a7746",
+        "matchesContract": true
+      }
+    },
+    "upstream": {
+      "version": "4.3.0",
+      "integrityVerified": true,
+      "sourceSha256": "ede1cc404a492fa348eb9d97a3007a0d72aa717bd22cd86a56bd0824c19729ca",
+      "matchesReviewedSource": true
+    }
+  },
+  "targetedTests": {
+    "tests": 169,
+    "pass": 169,
+    "fail": 0,
+    "skip": 0,
+    "cacheOfficialCounterexamples": 4,
+    "frozenMissingCorruptPatchNegatives": 6
+  },
+  "originalGeneratorControl": {
+    "tests": 17,
+    "pass": 2,
+    "expectedAssertionFailures": 15,
+    "skip": 0,
+    "exitCode": 1
+  },
+  "qualityChecks": [
+    {
+      "name": "peers",
+      "exitCode": 0
+    },
+    {
+      "name": "source-biome",
+      "exitCode": 0
+    },
+    {
+      "name": "security-biome",
+      "exitCode": 0
+    },
+    {
+      "name": "astro",
+      "exitCode": 0
+    },
+    {
+      "name": "types",
+      "exitCode": 0
+    },
+    {
+      "name": "swup-parent-types",
+      "exitCode": 0
+    },
+    {
+      "name": "five-parent-types",
+      "exitCode": 0
+    }
+  ],
+  "rawAudits": {
+    "prod": {
+      "exitCode": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 1,
+        "critical": 0
+      },
+      "ids": [
+        "GHSA-ch52-4w7c-c8xp"
+      ],
+      "sha256": "df8cfdbd6db1fa3a59ae0a10d4138b611c80edbfb0afacba95e5533a33db4aec"
+    },
+    "full": {
+      "exitCode": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 1,
+        "critical": 0
+      },
+      "ids": [
+        "GHSA-ch52-4w7c-c8xp"
+      ],
+      "sha256": "53801e3e1e5b371dc91aa24937b9ca03e7576f157c9cbdd37b37b87d4e1b9560"
+    }
+  },
+  "liveGate": {
+    "state": "BLOCKED",
+    "exitCode": 2,
+    "blocked": [
+      {
+        "code": "REPAIR_EVIDENCE:REPAIR_PRIMARY_UNAVAILABLE:ghsa"
+      }
+    ],
+    "repairEvidence": "UNVERIFIED",
+    "reason": "GitHub anonymous core API rate limit: HTTP403, remaining0; primary ghsa unavailable before behavior execution"
+  },
+  "providerResetUTC": "2026-10-13T12:13:55Z",
+  "reviewDatesChanged": false,
+  "existingReviewDeadline": "2026-10-14T14:27:22Z",
+  "dependenciesLockPatchesWorkflowsDraftUnchanged": true,
+  "completeNativeAndDualBaseBuilds": "NOT_RUN; new review candidate not formed while source-proof gate blocked",
+  "newReviewPR": "NOT_RUN",
+  "remoteCITriggered": "NOT_RUN",
+  "mergePages": "NOT_RUN",
+  "nextAction": "After provider reset, use the unchanged normal official collector and live gate with fresh output directories. If full sources and same-run proof pass, form substantive bounded review candidate, run remaining exact quality gates and normal authorized PR/CI/merge/Pages. Retain failed attempts; no injected or cached PASS."
+}
