@@ -1,0 +1,253 @@
+{
+  "status": "PASS",
+  "scope": "Actual PR35/main/Pages production delivery snapshot; subsequent documentation receipt is separate",
+  "at": "2026-10-13T13:00:31.999417+00:00",
+  "reviewedAt": "2026-10-13T12:22:05.000Z",
+  "reviewBy": "2026-10-20T12:22:05.000Z",
+  "days": 7,
+  "measuredLocalSource": "2b2b90ecb7ca3b5f1972682dfe0a63efbcfb183a",
+  "publicPrHead": "dc6dda3b1673a8b92f5ce5ce83fafdd66979a238",
+  "testedMerge": "94504a75f7ba5c195b96ae4d283a2e12e4c279e3",
+  "mainAndDeployedSource": "05f157e64695d9913614d6f5ab55218d6cd1d0d0",
+  "headTestedMergeMainTreesEqual": true,
+  "pr": 35,
+  "normalDraftChecksReadySquash": true,
+  "ci": [
+    {
+      "run": 38398751892,
+      "head": "dc6dda3b1673a8b92f5ce5ce83fafdd66979a238",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "Dependency security",
+          "conclusion": "success"
+        },
+        {
+          "name": "Peer compatibility",
+          "conclusion": "success"
+        },
+        {
+          "name": "Full quality (/)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Full quality (/Zhenkun-blog-site/)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run": 38398751942,
+      "head": "dc6dda3b1673a8b92f5ce5ce83fafdd66979a238",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "quality",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run": 38399370081,
+      "head": "05f157e64695d9913614d6f5ab55218d6cd1d0d0",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "Peer compatibility",
+          "conclusion": "success"
+        },
+        {
+          "name": "Full quality (/)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Dependency security",
+          "conclusion": "success"
+        },
+        {
+          "name": "Full quality (/Zhenkun-blog-site/)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run": 38399370037,
+      "head": "05f157e64695d9913614d6f5ab55218d6cd1d0d0",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "quality",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run": 38399370554,
+      "head": "05f157e64695d9913614d6f5ab55218d6cd1d0d0",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "quality / Peer compatibility",
+          "conclusion": "success"
+        },
+        {
+          "name": "quality / Full quality (/)",
+          "conclusion": "success"
+        },
+        {
+          "name": "quality / Full quality (/Zhenkun-blog-site/)",
+          "conclusion": "success"
+        },
+        {
+          "name": "quality / Dependency security",
+          "conclusion": "success"
+        },
+        {
+          "name": "build",
+          "conclusion": "success"
+        },
+        {
+          "name": "deploy",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "actualLinuxSecurityArtifacts": {
+    "pr": {
+      "head": "94504a75f7ba5c195b96ae4d283a2e12e4c279e3",
+      "state": "PASS",
+      "verifiedLocalRepairs": [
+        "GHSA-ch52-4w7c-c8xp",
+        "CVE-2026-93750"
+      ],
+      "raw": {
+        "prod": {
+          "exitCode": 1,
+          "high": 1
+        },
+        "full": {
+          "exitCode": 1,
+          "high": 1
+        }
+      }
+    },
+    "mainAndPages": {
+      "main-security-artifact": {
+        "source": "05f157e64695d9913614d6f5ab55218d6cd1d0d0",
+        "state": "PASS",
+        "raw": {
+          "prod": {
+            "high": 1,
+            "exitCode": 1
+          },
+          "full": {
+            "high": 1,
+            "exitCode": 1
+          }
+        },
+        "verifiedLocalRepairs": [
+          "GHSA-ch52-4w7c-c8xp",
+          "CVE-2026-93750"
+        ]
+      },
+      "pages-security-artifact": {
+        "source": "05f157e64695d9913614d6f5ab55218d6cd1d0d0",
+        "state": "PASS",
+        "raw": {
+          "prod": {
+            "high": 1,
+            "exitCode": 1
+          },
+          "full": {
+            "high": 1,
+            "exitCode": 1
+          }
+        },
+        "verifiedLocalRepairs": [
+          "GHSA-ch52-4w7c-c8xp",
+          "CVE-2026-93750"
+        ]
+      }
+    }
+  },
+  "uploadedPagesArtifact": {
+    "id": 11812964077,
+    "files": 274,
+    "tarSha256": "a863fe9ccf698fcd6d0c3a04c68af5ef692f0b86369f7cd94e610ff81c6532e7"
+  },
+  "productionHTTP": {
+    "responses": 8,
+    "allEqualUploadedArtifact": true,
+    "records": [
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "9c0721b86a1124f041ae11cd640863daa15c71beabad9c2cdbb141f05dbceee5"
+      },
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/en/",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "1d469259bb59aeab85bfbb48ba8da0de3be4ec5d5b59def082f9d0b87ca67b72"
+      },
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/about/",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "7c83a1b8171dfae95259e79b5c7c3e14f782287d4139f050135e995ec3ad7ece"
+      },
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/en/about/",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "239ff6015e59d98bb8e7eb34d4ba116e0a594df08ca0b227f873fd8850716084"
+      },
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/api/allPostMeta.json",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/en/api/allPostMeta.json",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/pagefind/pagefind-entry.json",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "9f06201d8706c7384bdb6104fd018bbb17cdcdc85d5dee123e3fb5c6d4b456da"
+      },
+      {
+        "url": "https://zhenkun26.github.io/Zhenkun-blog-site/_astro/Layout.CNMiNF8b.css",
+        "attempt": 1,
+        "status": 200,
+        "equalUploadedArtifact": true,
+        "sha256": "bd58221fd85d3590537156db2bcc1dbc0545adad892c7070f48c17b639f9ca9f"
+      }
+    ]
+  },
+  "formalChineseArticles": 0,
+  "formalEnglishArticles": 0,
+  "pagefindPages": 2,
+  "launchDraftUnchangedAndUnpublished": true,
+  "allDependencyLockPatchWorkflowApplicationBlobsEqualPriorDeployedMain": true,
+  "allStructuralPrimaryLedgerPatchTestInstalledBoundaryBindingsUnchanged": true,
+  "rawHighMeaning": "Each real prod/full still1high/exit1; two locally proven identities VERIFIED_LOCAL_REPAIR, not an upstream withdrawal or clean raw audit",
+  "quotaFailureRetainedAndResolvedByServiceReset": true,
+  "independentAdditionalCodeReview": "NOT_RUN per owner preference",
+  "newGuiMatrix": "NOT_APPLICABLE; unchanged application/config/public source, eight production byte comparisons and artifact/source equivalence",
+  "realArticleOrCommentPublication": "NOT_RUN",
+  "remaining": "Owner manuscript/learning/physical-device/comment acceptance; this review adds no feature scope"
+}
