@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "scope": "Local candidate acceptance only; exact remote delivery remains separately required",
+  "at": "2026-10-13T12:36:29.461821+00:00",
+  "measuredSource": "2b2b90ecb7ca3b5f1972682dfe0a63efbcfb183a",
+  "reviewedAt": "2026-10-13T12:22:05.000Z",
+  "reviewBy": "2026-10-20T12:22:05.000Z",
+  "durationDays": 7,
+  "officialSourceRefresh": {
+    "ghsa": 41,
+    "publisherCve": "CVE-2026-93750",
+    "allPrimaryProjectionsUnchanged": true,
+    "officialCache4_3SourceUnchanged": true
+  },
+  "latestAstroStaticInspection": {
+    "at": "2026-10-13T12:20:52.068346+00:00",
+    "version": "7.3.8",
+    "integrityVerified": true,
+    "generatorSha256": "9f469bcdcd5828edcd0e857d80dbf72553ce81940a497d06a5b744fc758f2717",
+    "retainedOfficialGeneratorSha256": "d35fda4e0a924ab0034f2c43983ccad4a7918667333fe381f355f057d9cb20db",
+    "generatorEqualRetainedOfficial": false,
+    "latestParentInstalledOrExecuted": false,
+    "installedVersionRemains": "7.2.10",
+    "decision": "No dependency upgrade in this bounded review; actual installed patch/source and parent behavior are separately proven.",
+    "staticObservations": {
+      "copiesUnexpiredRemoteCache": true,
+      "reusesStaleAfterRevalidationError": true,
+      "persistsRemoteCacheMetadata": true
+    },
+    "limits": "Read-only source comparison; latest7.3.8 was not installed/executed. These branches support retaining the exact current-parent repair, not complete acceptance of a different framework version."
+  },
+  "unchangedGraph": {
+    "packages": 889,
+    "snapshots": 892,
+    "guards": 27,
+    "parentResolutions": 8,
+    "cacheLinks": 2,
+    "astroInstances": 1,
+    "deploymentBoundaryFiles": 522,
+    "boundarySha256": "065c3798d3bbfbe3aa5b59cbef0771d34548c0bbf68c55e6db37965b998847c2"
+  },
+  "native": {
+    "tests": 397,
+    "pass": 397,
+    "fail": 0,
+    "skip": 0
+  },
+  "quality": [
+    {
+      "name": "candidate-peers",
+      "exitCode": 0
+    },
+    {
+      "name": "candidate-source-biome",
+      "exitCode": 0
+    },
+    {
+      "name": "candidate-security-biome",
+      "exitCode": 0
+    },
+    {
+      "name": "candidate-astro",
+      "exitCode": 0
+    },
+    {
+      "name": "candidate-types",
+      "exitCode": 0
+    },
+    {
+      "name": "candidate-swup-parent-types",
+      "exitCode": 0
+    },
+    {
+      "name": "candidate-five-parent-types",
+      "exitCode": 0
+    },
+    {
+      "name": "build-root",
+      "exitCode": 0
+    },
+    {
+      "name": "artifacts-root",
+      "exitCode": 0
+    },
+    {
+      "name": "locale-root",
+      "exitCode": 0
+    },
+    {
+      "name": "build-pages",
+      "exitCode": 0
+    },
+    {
+      "name": "artifacts-pages",
+      "exitCode": 0
+    },
+    {
+      "name": "locale-pages",
+      "exitCode": 0
+    }
+  ],
+  "rawAudits": {
+    "prod": {
+      "exitCode": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 1,
+        "critical": 0
+      },
+      "ids": [
+        "GHSA-ch52-4w7c-c8xp"
+      ]
+    },
+    "full": {
+      "exitCode": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 1,
+        "critical": 0
+      },
+      "ids": [
+        "GHSA-ch52-4w7c-c8xp"
+      ]
+    }
+  },
+  "liveGate": {
+    "state": "PASS",
+    "exitCode": 0,
+    "repairEvidence": {
+      "state": "VERIFIED_LOCAL_REPAIR",
+      "error": null
+    },
+    "verifiedLocalRepairs": [
+      "GHSA-ch52-4w7c-c8xp",
+      "CVE-2026-93750"
+    ],
+    "blocked": [],
+    "unresolved": []
+  },
+  "formalBuildOutputs": {
+    "root": {
+      "formalArticles": {
+        "Chinese": 0,
+        "English": 0
+      },
+      "pagefindPages": 2,
+      "launchRouteAbsent": true,
+      "languageAuditedCommonPages": 16
+    },
+    "pages": {
+      "formalArticles": {
+        "Chinese": 0,
+        "English": 0
+      },
+      "pagefindPages": 2,
+      "launchRouteAbsent": true,
+      "languageAuditedCommonPages": 16
+    }
+  },
+  "dependenciesLockPatchesWorkflowsDraftUnchanged": true,
+  "gui": "No new matrix; all application/config/public blobs equal already accepted deployed source dbf0b70",
+  "priorQuotaFailure": "Retained; provider reset respected, same original client/gate, new output directories",
+  "draftPRMainPages": "PENDING",
+  "unreviewedArticleAndRealComments": "NOT_RUN"
+}

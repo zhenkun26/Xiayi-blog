@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"reviewedAt": "2026-10-07T14:27:22.000Z",
-	"reviewBy": "2026-10-14T14:27:22.000Z",
+	"reviewedAt": "2026-10-13T12:22:05.000Z",
+	"reviewBy": "2026-10-20T12:22:05.000Z",
 	"owner": "dependency remediation coordinator",
-	"scope": "Retained 36 official GHSA plus separate publisher CVE-2026-93750, with five additional official GHSA reviewed 2026-10-08. Existing review deadline unchanged. Raw version findings and prod/full path differences are preserved; only separately proven cache repair changes its effective status. No vulnerability waiver.",
+	"scope": "Retained42 ledger (41 official GHSA plus publisher CVE-2026-93750), substantively refreshed2026-10-13 against current official sources, frozen graph, actual installed parents/three patches and behavior/counterexamples. Raw prod/full version findings stay visible; only same-run proven cache repair changes effective status. No vulnerability waiver or dependency upgrade.",
 	"knownAdvisories": [
 		{
 			"id": "GHSA-6j4f-fj2g-mc7p",

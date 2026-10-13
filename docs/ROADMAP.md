@@ -149,6 +149,21 @@ The local-acceptance entries below retain their original scope and commit eviden
 
 ## 当前断点
 
+### Security retained-graph review — 2026-10-13 — 进行中（实质候选）
+
+- **当前范围/来源**：同一隔离分支，fresh main dbf0b70；保留c384ee8限流断点与全部原证据。quota恢复后预检55，保留45预算；新41GHSA/CVE/三个primary与官方cache4.3.0完整性/全源码通过，原livegate在clean c384ee8重新采集并证明两身份，PASS/exit0，raw prod/full仍各1high/exit1。
+- **实质保留决策**：实际889packages/892snapshots/27guards、八父链/两cache/一Astro/三个patch一致；169定向、官方/原生成器/六frozen负例和七质量检查通过。只读Astro最新7.3.8源有版本差异，仍见远程复用/持久分支，未安装执行/升级。依赖/lock/patch/workflow/application/draft及全部原结构绑定不变。
+- **候选记录**：reviewAt `2026-10-13T12:22:05.000Z`，两处reviewBy `2026-10-20T12:22:05.000Z`，真实七天决策与scope/reason/provenance；非日期/哈希单改，证据见 [renewal report](../references/security-review-2026-10-13/renewal-report.md) / ADR-XB-017。精确新候选2b2b90e自身live/完整397native（0fail/skip）/七质量检查/root与Pages完整构建、Pagefind、artifact与16common-page语言审计全部PASS，raw仍各1high/exit1，两verified修复、无unresolved/blocked。两语言正式文章0/0，Pagefind仅2About，草稿不变。exact PR/main/Pages仍待完成；未把本地PASS归属远端。当前审计披露授权持续有效；发布/首稿边界不扩。
+
+
+### Security review — 2026-10-13 — 进行中（官方 API 限流 BLOCKED）
+
+- **范围/授权**：隔离 fresh main `dbf0b70`，分支 `codex/blog-security-review-20261013`。用户明确批准本轮本地、新复审PR、合并main及Pages的prod/full依赖元数据披露与原有7天Artifact证据；保留正常Auto-review/PR/CI流程，不增加独立reviewer，不触碰其他项目或全局工具配置。
+- **已完成基线证明**：Node24.20.0/pnpm11.22.0 unchanged frozen/offline安装；实际图889packages/892snapshots/27guards、522-file边界、八父链/两cache/一Astro及三个补丁源码相符。169定向测试0fail/skip，四官方反例和六补丁frozen缺失/损坏负例通过；原生成器17tests中2控制通过/15预期断言失败。peer/Biome/Astro0error-warning、15retained hints、正式类型及实际父声明检查通过。证明绑定测量源dbf0b70，详见 [报告](../references/security-review-2026-10-13/report.md) / [收据](../references/security-review-2026-10-13/receipt.json)。
+- **发布门暂停**：缓存三primary投影及官方4.3.0完整性/源码相同；本轮全量GHSA采集19成功、22因匿名core quota HTTP403失败。clean-source真实prod/full audit各1high/exit1；同次live gate exit2/BLOCKED，`REPAIR_PRIMARY_UNAVAILABLE:ghsa`，未执行其内行为证明，不能继承旧VERIFIED_LOCAL_REPAIR。provider reset为2026-10-13T12:13:55Z。两处reviewBy仍2026-10-14T14:27:22Z，未改日期、依赖/lock/patch/workflow/草稿，未新建PR或触发CI/部署。
+- **恢复动作**：quota恢复后以新输出目录重取官方来源并重跑原live gate；保留失败，不注入缓存PASS或调整客户端/权限绕过。完整来源和实质证明齐备后才形成≤7天复审候选，完成剩余exact质量与正常draftPR/CI/merge/Pages。当前审计授权持续有效。到期阻止后续发布，不使当前静态站下线。
+
+
 ### S3 homepage directions — 2026-10-08 — 完成（工程范围；余项人类验收）
 
 - **范围**：从实际 main `7a32c903` 补首页首屏的 AI / 大气科学 / 生活随笔说明；英文 AI / Atmospheric Science / Life Notes。共享首页读取现有双语 catalog 的 typed 数据，复用卡片/字体颜色和响应式 grid。保留施工提示、品牌/作者 Zhenkun、原内容列表/空态；不创造文章、数量、过滤链接或专业身份。
