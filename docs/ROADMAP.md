@@ -149,11 +149,11 @@ The local-acceptance entries below retain their original scope and commit eviden
 
 ## 当前断点
 
-### Security retained-graph review — 2026-10-13 — 进行中（实质候选）
+### Security retained-graph review — 2026-10-13 — 完成（实质复审与生产交付）
 
 - **当前范围/来源**：同一隔离分支，fresh main dbf0b70；保留c384ee8限流断点与全部原证据。quota恢复后预检55，保留45预算；新41GHSA/CVE/三个primary与官方cache4.3.0完整性/全源码通过，原livegate在clean c384ee8重新采集并证明两身份，PASS/exit0，raw prod/full仍各1high/exit1。
 - **实质保留决策**：实际889packages/892snapshots/27guards、八父链/两cache/一Astro/三个patch一致；169定向、官方/原生成器/六frozen负例和七质量检查通过。只读Astro最新7.3.8源有版本差异，仍见远程复用/持久分支，未安装执行/升级。依赖/lock/patch/workflow/application/draft及全部原结构绑定不变。
-- **候选记录**：reviewAt `2026-10-13T12:22:05.000Z`，两处reviewBy `2026-10-20T12:22:05.000Z`，真实七天决策与scope/reason/provenance；非日期/哈希单改，证据见 [renewal report](../references/security-review-2026-10-13/renewal-report.md) / ADR-XB-017。精确新候选2b2b90e自身live/完整397native（0fail/skip）/七质量检查/root与Pages完整构建、Pagefind、artifact与16common-page语言审计全部PASS，raw仍各1high/exit1，两verified修复、无unresolved/blocked。两语言正式文章0/0，Pagefind仅2About，草稿不变。exact PR/main/Pages仍待完成；未把本地PASS归属远端。当前审计披露授权持续有效；发布/首稿边界不扩。
+- **候选记录**：reviewAt `2026-10-13T12:22:05.000Z`，两处reviewBy `2026-10-20T12:22:05.000Z`，真实七天决策与scope/reason/provenance；非日期/哈希单改，证据见 [renewal report](../references/security-review-2026-10-13/renewal-report.md) / ADR-XB-017。精确新候选2b2b90e自身live/完整397native（0fail/skip）/七质量检查/root与Pages完整构建、Pagefind、artifact与16common-page语言审计全部PASS，raw仍各1high/exit1，两verified修复、无unresolved/blocked。两语言正式文章0/0，Pagefind仅2About，草稿不变。[PR35](https://github.com/zhenkun26/Zhenkun-blog-site/pull/35)经精确五项checks→ready→正常squash，public dc6dda3/tested94504a7/main05f157e完整树相同。PR quality/Biome38398751892/38398751942，main quality/Biome38399370081/38399370037与Pages38399370554全部success，actual deploy完成。下载PR/main/Pages实际安全Artifact各自证明source、raw各1high/exit1、两verified修复，无unresolved/blocked。实际Pages artifact11812964077含274文件，八个线上GET与上传逐字节相符；[delivery receipt](../references/security-review-2026-10-13/delivery-receipt.json)归属精确05f157e，不把旧PASS指派新head。后续仅文档收据正常PR，不改变复审输入或期限。当前审计披露授权持续有效；发布/首稿边界不扩。
 
 
 ### Security review — 2026-10-13 — 进行中（官方 API 限流 BLOCKED）
