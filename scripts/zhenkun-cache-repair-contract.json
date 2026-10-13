@@ -65,10 +65,10 @@
 		"integrity": "sha512-M5t5LlJpS1UHMjvwRQVdFHvPISGeLAxNcrWuJkeGh0KxsqCHZ1O3NXZU/8x7cD0BDcGW8kapxMKTvwlqrNkHkA==",
 		"tarball": "https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-4.3.0.tgz",
 		"sourceSha256": "ede1cc404a492fa348eb9d97a3007a0d72aa717bd22cd86a56bd0824c19729ca",
-		"reviewedAt": "2026-10-07T14:27:22.000Z",
-		"reviewBy": "2026-10-14T14:27:22.000Z",
-		"reviewedBy": "S1 implementation self-check (6.1 Sol), official refresh 2026-10-07; prior independent review retained in historical evidence",
+		"reviewedAt": "2026-10-13T12:22:05.000Z",
+		"reviewBy": "2026-10-20T12:22:05.000Z",
+		"reviewedBy": "Implementation self-check2026-10-13: current official-source, frozen graph, actual installed-parent and behavior refresh; prior independent review remains historical evidence",
 		"decision": "retain-reviewed-local-patches",
-		"reason": "Fresh 36 GHSA and publisher CVE reconciliation, exact primary projections, official 4.3.0 tarball integrity and identical full source confirm the prior bounded decision. 4.3.0 retains max-stale/stale/error/304 restriction and Astro parent reuse gaps. Keep exact 4.2.0 policy patch plus Astro entry patch; no upstream execution or dependency change. Revalidate actual installed code and tests on the newly merged deployment boundary."
+		"reason": "Current41GHSA and publisher CVE scope, all three exact primary projections, official4.3.0 integrity/full source and the unchanged frozen graph support retaining the approved local cache4.2.0/Astro7.2.10 patches. Actual eight parent paths, two cache links, one Astro instance and all three installed patch identities match. Fresh62 cache/parent positives, four official counterexamples, original generator15expected failures/2controls and same-run live gate pass while raw prod/full each retain1high/exit1. Latest Astro parent was only read, not installed or executed; no dependency upgrade is part of this bounded decision. This new candidate still requires its own current-clock live proof and exact quality/CI acceptance."
 	}
 }
